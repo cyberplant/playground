@@ -1,0 +1,2 @@
+- platform: hddtemp
+  host: 192.168.17.1

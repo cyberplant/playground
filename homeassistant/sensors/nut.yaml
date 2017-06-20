@@ -1,0 +1,11 @@
+- platform: nut
+  host: 192.168.17.30
+  username: monuser
+  password: secret
+  resources:
+    - battery.charge
+    - ups.load
+    - input.voltage
+    - ups.status
+    - ups.temperature
+    - battery.voltage

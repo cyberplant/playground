@@ -1,0 +1,9 @@
+general_info:
+  name: Informacion general
+  entities:
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.cpu_speed
+    - sensor.cpu_temperature
+    - sensor.systemmonitor

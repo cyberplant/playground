@@ -1,0 +1,48 @@
+- platform: mqtt
+  name: "Z0 Switch Ubiquiti"
+  state_topic: "switch/334a1200/pin_0"
+  command_topic: "switch/334a1200/control"
+  payload_on: "power_on:0"
+  payload_off: "power_off:0"
+- platform: mqtt
+  name: "Z1 ESP"
+  state_topic: "switch/334a1200/pin_1"
+  command_topic: "switch/334a1200/control"
+  payload_on: "power_on:1"
+  payload_off: "power_off:1"
+- platform: mqtt
+  name: "Z2 Warpzone"
+  state_topic: "switch/334a1200/pin_2"
+  command_topic: "switch/334a1200/control"
+  payload_on: "power_on:2"
+  payload_off: "power_off:2"
+- platform: mqtt
+  name: "Z3 Mikrotik"
+  state_topic: "switch/334a1200/pin_3"
+  command_topic: "switch/334a1200/control"
+  payload_on: "power_on:3"
+  payload_off: "power_off:3"
+- platform: mqtt
+  name: "Z4 NVR"
+  state_topic: "switch/334a1200/pin_4"
+  command_topic: "switch/334a1200/control"
+  payload_on: "power_on:4"
+  payload_off: "power_off:4"
+- platform: mqtt
+  name: "Z5 Monitor"
+  state_topic: "switch/334a1200/pin_5"
+  command_topic: "switch/334a1200/control"
+  payload_on: "power_on:5"
+  payload_off: "power_off:5"
+- platform: mqtt
+  name: "Z6 vacio"
+  state_topic: "switch/334a1200/pin_6"
+  command_topic: "switch/334a1200/control"
+  payload_on: "power_on:6"
+  payload_off: "power_off:6"
+- platform: mqtt
+  name: "Z7 FTTH"
+  state_topic: "switch/334a1200/pin_7"
+  command_topic: "switch/334a1200/control"
+  payload_on: "power_on:7"
+  payload_off: "power_off:7"

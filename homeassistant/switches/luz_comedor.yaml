@@ -1,0 +1,3 @@
+- platform: tplink
+  name: "Luz Comedor"
+  host: !secret host_luz_comedor

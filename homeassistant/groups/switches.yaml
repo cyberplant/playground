@@ -1,0 +1,14 @@
+switches:
+  name: Interruptores
+  entities:
+    - switch.calefon
+    - switch.rack_fans
+    - switch.luz_comedor
+    - switch.z0_switch_ubiquiti
+    - switch.z1_esp
+    - switch.z2_warpzone
+    - switch.z3_mikrotik
+    - switch.z4_nvr
+    - switch.z5_monitor
+    - switch.z6_vacio
+    - switch.z7_ftth

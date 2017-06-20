@@ -1,0 +1,3 @@
+- platform: mqtt
+  name: "Rack fans"
+  command_topic: "rack/fans/set"

@@ -1,0 +1,11 @@
+default_view:
+  view: yes
+  entities:
+    - group.sensors
+    - group.rack_ups
+    - group.office_ups
+    - group.weather
+    - group.general_info
+    - group.switches
+    - group.cameras
+    - group.media

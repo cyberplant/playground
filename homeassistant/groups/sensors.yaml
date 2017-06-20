@@ -1,0 +1,7 @@
+sensors:
+  name: Sensores
+  entities:
+    - sensor.office_temperature
+    - sensor.rack_temperature
+    - sensor.rack_humidity
+    - sensor.hd_temperature

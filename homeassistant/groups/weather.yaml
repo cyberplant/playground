@@ -1,0 +1,17 @@
+weather:
+  name: Clima
+  entities:
+    - sensor.yr_temperature
+    - sensor.yr_symbol
+    - sensor.yr_precipitation
+    - sensor.yr_windSpeed
+    - sensor.yr_pressure
+    - sensor.yr_windDirection
+    - sensor.yr_humidity
+    - sensor.yr_fog
+    - sensor.yr_cloudiness
+    - sensor.yr_lowClouds
+    - sensor.yr_mediumClouds
+    - sensor.yr_highClouds
+    - sensor.yr_dewpointTemperature
+    - sun.sun
