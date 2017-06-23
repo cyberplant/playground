@@ -1,0 +1,5 @@
+- platform: mikrotik
+  host: !secret device_tracker_host
+  username: !secret device_tracker_username
+  password: !secret device_tracker_password
+  port: !secret device_tracker_port

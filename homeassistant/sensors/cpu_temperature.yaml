@@ -1,0 +1,4 @@
+- platform: command_line
+  name: CPU Temperature
+  command: "cat /sys/class/thermal/thermal_zone1/temp"
+  unit_of_measurement: "°C"
