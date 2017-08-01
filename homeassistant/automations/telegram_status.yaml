@@ -1,0 +1,40 @@
+- id: telegram_status
+  alias: Telegram command that reply status
+  hide_entity: true
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: /status
+  action:
+  - service: notify.telegram
+    data:
+      message: |
+        *Sensors:*
+        {% for x in
+           [
+            "rack_temperature", "rack_humidity", "office_temperature",
+            "yr_temperature", "yr_humidity", "calefon", "ram_free",
+            "ups_rack_load", "ups_rack_battery_charge",
+            "ups_office_load", "ups_office_battery_charge",
+            "speedtest_download", "speedtest_upload", "speedtest_ping",
+           ]
+        -%}
+         {% set s = states.sensor[x] -%}
+         {% if s -%}
+          _{{s.name }}_: `{{ s.state }}{{ s.attributes.unit_of_measurement }}`
+         {%- else -%}
+          {{ x }} -> Unknown
+         {%- endif %}
+        {% endfor %}
+        *Switches:*
+        {% for x in ["calefon", "luz_comedor", "rack_fans"] -%}
+         {% set s = states.switch[x] -%}
+         {% if s -%}
+          _{{s.name }}_: `{{ s.state }}`
+         {%- else -%}
+          {{ x }} -> Unknown
+         {%- endif %}
+        {% endfor %}
+        *Luar* is `{{ states("device_tracker.9885e6493348395337") }}`
+        *Tesa* is `{{ states("device_tracker.918db8b47d04") }}`

@@ -1,5 +1,6 @@
 - platform: nut
-  host: 192.168.17.30
+  name: UPS Office
+  host: !secret ip_ups_office
   username: monuser
   password: secret
   resources:

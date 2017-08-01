@@ -1,5 +1,5 @@
 - platform: mqtt
   state_topic: 'rack/sensor1'
-  name: 'rack_temperature'
+  name: 'Rack Temperature'
   unit_of_measurement: '°C'
   value_template: '{{ value_json.temperature }}'

@@ -1,0 +1,13 @@
+- action:
+  - alias: Rack UPS on Battery notification.
+    data:
+      message: Rack UPS is on Battery.
+    service: notify.telegram
+  alias: Notify when Rack UPS is on battery
+  id: '1497919127277'
+  trigger:
+  - entity_id: sensor.rack_ups_status
+    from: OL
+    platform: state
+    to: OB
+

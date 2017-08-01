@@ -10,8 +10,4 @@ weather:
     - sensor.yr_humidity
     - sensor.yr_fog
     - sensor.yr_cloudiness
-    - sensor.yr_lowClouds
-    - sensor.yr_mediumClouds
-    - sensor.yr_highClouds
-    - sensor.yr_dewpointTemperature
     - sun.sun

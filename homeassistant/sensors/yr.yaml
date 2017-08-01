@@ -9,7 +9,3 @@
     - humidity
     - fog
     - cloudiness
-    - lowClouds
-    - mediumClouds
-    - highClouds
-    - dewpointTemperature

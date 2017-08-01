@@ -1,0 +1,13 @@
+- action:
+  - alias: Office UPS on Line Power notification.
+    data:
+      message: Office UPS is on Line Power.
+    service: notify.telegram
+  alias: Notify when Office UPS is on line power
+  id: '1497919127278'
+  trigger:
+  - entity_id: sensor.office_ups_status_data
+    from: OB
+    platform: state
+    to: OL
+

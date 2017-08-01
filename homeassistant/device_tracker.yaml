@@ -3,3 +3,8 @@
   username: !secret device_tracker_username
   password: !secret device_tracker_password
   port: !secret device_tracker_port
+
+- platform: owntracks
+  max_gps_accuracy: 200
+
+- platform: gpslogger

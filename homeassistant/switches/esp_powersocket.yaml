@@ -5,25 +5,25 @@
   payload_on: "power_on:0"
   payload_off: "power_off:0"
 - platform: mqtt
-  name: "Z1 ESP"
+  name: "Z1 NVR"
   state_topic: "switch/334a1200/pin_1"
   command_topic: "switch/334a1200/control"
   payload_on: "power_on:1"
   payload_off: "power_off:1"
 - platform: mqtt
-  name: "Z2 Warpzone"
+  name: "Z2 Warpzone y Mikrotik"
   state_topic: "switch/334a1200/pin_2"
   command_topic: "switch/334a1200/control"
   payload_on: "power_on:2"
   payload_off: "power_off:2"
 - platform: mqtt
-  name: "Z3 Mikrotik"
+  name: "Z3 empty"
   state_topic: "switch/334a1200/pin_3"
   command_topic: "switch/334a1200/control"
   payload_on: "power_on:3"
   payload_off: "power_off:3"
 - platform: mqtt
-  name: "Z4 NVR"
+  name: "Z4 ESP8266"
   state_topic: "switch/334a1200/pin_4"
   command_topic: "switch/334a1200/control"
   payload_on: "power_on:4"
@@ -35,7 +35,7 @@
   payload_on: "power_on:5"
   payload_off: "power_off:5"
 - platform: mqtt
-  name: "Z6 vacio"
+  name: "Z6 NAS"
   state_topic: "switch/334a1200/pin_6"
   command_topic: "switch/334a1200/control"
   payload_on: "power_on:6"

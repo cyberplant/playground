@@ -1,0 +1,13 @@
+- action:
+  - alias: Rack UPS on Line Power notification.
+    data:
+      message: Rack UPS is on Line Power.
+    service: notify.telegram
+  alias: Notify when Rack UPS is on Line Power
+  id: '1497919127277'
+  trigger:
+  - entity_id: sensor.rack_ups_status
+    from: OB
+    platform: state
+    to: OL
+

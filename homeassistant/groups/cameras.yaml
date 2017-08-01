@@ -1,6 +1,0 @@
-cameras:
-  name: Camaras
-  entities:
-    - camera.calle_miguelete
-    - camera.comedor
-    - camera.rack_webcam

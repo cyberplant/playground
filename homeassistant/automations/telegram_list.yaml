@@ -1,0 +1,19 @@
+- id: telegram_list
+  alias: telegram_command list
+  hide_entity: true
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: /commands
+  action:
+  - service: notify.telegram
+    data:
+      message: commands
+      data:
+        keyboard:
+        - /rack_fans_off, /rack_fans_on
+        - /calefon_off, /calefon_on
+        - /luz_comedor_off, /luz_comedor_on
+        - /ping, /status
+

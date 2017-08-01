@@ -5,6 +5,7 @@ homeassistant:
   elevation: !secret elevation
   unit_system: metric
   time_zone: !secret time_zone
+  customize: !include customize.yaml
 
 recorder:
   purge_days: 8
@@ -22,7 +23,9 @@ updater:
 
 discovery:
 
-conversation:
+conversation: !include conversation.yaml
+
+shopping_list:
 
 history:
 
@@ -32,21 +35,20 @@ sun:
 
 mqtt:
   broker: homeassistant
+  username: !secret mqtt_username
+  password: !secret mqtt_password
 
 influxdb:
   host: !secret main_server
   database: homeassistant
 
-apcupsd: 
-  host: !secret main_server
-
 config:
 
 notify: !include notify.yaml
-automation: !include automations.yaml
 telegram_bot: !include telegram_bot.yaml
 device_tracker: !include device_tracker.yaml
 
+automation: !include_dir_merge_list automations/
 group: !include_dir_merge_named groups/
 sensor: !include_dir_merge_list sensors/
 switch: !include_dir_merge_list switches/

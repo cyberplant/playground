@@ -1,0 +1,13 @@
+# - action:
+#   - alias: Prender calefon al mediodia
+#     trigger:
+#      platform: time
+#      hours: 12
+#      minutes: 0
+#      seconds: 0
+#     - service: homeassistant.turn_on
+#      entity_id:
+#      - switch.calefon
+#     - service: notify.telegram
+#       data:
+#         message: 'Prendiendo el calefon..'

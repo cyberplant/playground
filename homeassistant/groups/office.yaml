@@ -1,0 +1,11 @@
+office:
+  name: Oficina
+  view: yes
+  entities:
+    - sensor.ups_office_battery_charge
+    - sensor.ups_office_battery_voltage
+    - sensor.ups_office_input_voltage
+    - sensor.ups_office_load
+    - sensor.ups_office_status_data
+    - sensor.ups_office_ups_temperature
+    - sensor.synologydsm_cpu_total_load

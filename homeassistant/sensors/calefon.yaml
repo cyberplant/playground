@@ -1,0 +1,21 @@
+- platform: template
+  sensors:
+    calefon:
+      friendly_name: 'Calefon'
+      value_template: >-
+          {%- if not states.switch["calefon"] -%}
+            Not connected yet.
+          {%- else %}
+            {%- if (states.switch.calefon.attributes.state_detail=='on') -%}
+                On
+            {%- elif (states.switch.calefon.attributes.state_detail=='standby') -%}
+                Standby
+            {%- elif (states.switch.calefon.attributes.state_detail=='off') -%}
+                Off
+            {%- else -%}
+                Unknown
+            {%- endif -%}
+            {%- if states.switch.calefon.attributes.current_power_w -%} 
+               ->{{ states.switch.calefon.attributes.current_power_w | round(1) }} W
+            {%- endif %}
+          {%- endif %}

@@ -1,0 +1,5 @@
+- platform: mqtt
+  state_topic: "19021c00/temperature"
+  name: 'Office Temperature'
+  unit_of_measurement: '°C'
+  expire_after: 86400

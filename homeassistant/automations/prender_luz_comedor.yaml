@@ -1,0 +1,9 @@
+- id: prender_luz_comedor
+  alias: Prender la luz del comedor
+  trigger:
+    platform: sun
+    event: sunset
+    offset: +00:25:00
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.luz_comedor

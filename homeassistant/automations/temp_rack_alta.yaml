@@ -1,0 +1,18 @@
+- id: temp_rack_alta
+  alias: Temp Rack Alta
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.rack_temperature
+    above: 32.0
+  condition:
+    condition: state
+    entity_id: switch.rack_fans
+    state: 'off'
+  action:
+  - service: homeassistant.turn_on
+    entity_id:
+    - switch.rack_fans
+  - service: notify.telegram
+    data:
+      message: "Turning on rack fans, T:{{ states.sensor.rack_temperature.state }}\xBA\
+        C H:{{ states.sensor.rack_humidity.state }}%"

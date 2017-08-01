@@ -1,0 +1,19 @@
+- id: temp_rack_baja
+  alias: Temp Rack Baja
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.rack_temperature
+    below: 28
+  condition:
+    condition: state
+    entity_id: switch.rack_fans
+    state: 'on'
+  action:
+  - service: homeassistant.turn_off
+    entity_id:
+    - switch.rack_fans
+  - service: notify.telegram
+    data:
+      message: "Turning off rack fans, T:{{ states.sensor.rack_temperature.state }}\xBA\
+        C H:{{ states.sensor.rack_humidity.state }}%"
+

@@ -1,0 +1,16 @@
+- id: calefon_on
+  alias: Calefon calentando
+  # initial_state: False
+  trigger:
+    platform: template
+    value_template: '{% if (states.switch.calefon.attributes.state_detail==''on'')
+      %}true{% else %}false{% endif %}'
+  action:
+#   - service: mqtt.publish
+#     data:
+#       topic: "19021c00/lcd/line3"
+#       payload_template: 'Calefon ON: {{ states.switch.Calefon.attributes.current_power_w }} W'
+  - service: notify.telegram
+    data:
+      message: 'Calefon calentando, consumo: {{ states.switch.Calefon.attributes.current_power_w }} watts'
+

@@ -1,0 +1,12 @@
+switches_powersocket:
+  view: yes
+  name: Power Socket
+  entities:
+    - switch.z0_switch_ubiquiti
+    - switch.z1_nvr
+    - switch.z2_warpzone_y_mikrotik
+    - switch.z3_empty
+    - switch.z4_esp8266
+    - switch.z5_monitor
+    - switch.z6_nas
+    - switch.z7_ftth

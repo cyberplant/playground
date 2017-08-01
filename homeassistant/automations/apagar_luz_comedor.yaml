@@ -1,0 +1,9 @@
+- id: apagar_luz_comedor
+  alias: Apagar la luz del comedor
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: -00:35:00
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.luz_comedor

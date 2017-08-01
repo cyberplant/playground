@@ -1,0 +1,14 @@
+- id: telegram_avisar_llega_tesa
+  alias: Avisar por telegram cuando llega mi madre
+  trigger:
+    platform: state
+    entity_id: !secret xiaomi_device
+    from: 'not_home'
+    to: 'home'
+    for:
+      minutes: 10
+  action:
+    service: notify.telegram
+    data:
+      message: Mama volvio a casa
+

@@ -1,0 +1,14 @@
+- id: telegram_avisar_sale_tesa
+  alias: Avisar por telegram cuando se va mi madre de casa
+  trigger:
+    platform: state
+    entity_id: !secret xiaomi_device
+    from: 'home'
+    to: 'not_home'
+    for:
+      minutes: 10
+  action:
+    service: notify.telegram
+    data:
+      message: Mama salio de casa
+

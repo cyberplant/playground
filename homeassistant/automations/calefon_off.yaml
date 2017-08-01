@@ -1,0 +1,10 @@
+- id: calefon_off
+  alias: Calefon off
+  trigger:
+    platform: template
+    value_template: '{% if (states.switch.calefon.attributes.state_detail==''off'') %}true{% else %}false{% endif %}'
+  action:
+  - service: notify.telegram
+    data:
+      message: 'Calefon apagado.'
+

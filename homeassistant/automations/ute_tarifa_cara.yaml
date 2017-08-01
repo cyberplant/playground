@@ -1,0 +1,32 @@
+- id: ute_tarifa_cara 
+  alias: Apagar artefactos en horario caro
+  trigger:
+   - platform: time
+     hours: 17
+     minutes: 0
+  condition:
+    condition: state
+    entity_id: switch.calefon
+    state: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:
+      - switch.calefon
+    - service: notify.telegram
+      data:
+        message: 'Apagando el calefon (zona cara de UTE)'
+
+- id: ute_tarifa_cara_alerta
+  alias: Avisar de horario caro
+  trigger:
+    platform: template
+    value_template: '{% if states.switch["calefon"] and states.switch.calefon.attributes.state_detail=="on" %}true{% else %}false{% endif %}'
+  condition:
+    condition: template
+    value_template: '{% set h = now().strftime("%H") | int %}{{ h > 16 and h < 23}}'
+    # Esto tambien anda:
+    # {{ (now().strftime("%H") | int) in [17, 18, 19, 20, 21, 22] }}
+  action:
+    - service: notify.telegram
+      data:
+        message: 'ATENCION! Calefon prendido en horario caro!!'
