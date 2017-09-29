@@ -4,4 +4,4 @@ switches_generic:
   entities:
     - switch.calefon
     - switch.rack_fans
-    - switch.luz_comedor
+    - light.luz_comedor

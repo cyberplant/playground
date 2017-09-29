@@ -6,4 +6,4 @@
     offset: +00:25:00
   action:
     service: homeassistant.turn_on
-    entity_id: switch.luz_comedor
+    entity_id: light.luz_comedor

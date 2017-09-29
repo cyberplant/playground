@@ -22,13 +22,13 @@
         -%}
          {% set s = states.sensor[x] -%}
          {% if s -%}
-          _{{s.name }}_: `{{ s.state }}{{ s.attributes.unit_of_measurement }}`
+          _{{s.name }}_: `{{ s.state }} {{ s.attributes.unit_of_measurement }}`
          {%- else -%}
           {{ x }} -> Unknown
          {%- endif %}
         {% endfor %}
         *Switches:*
-        {% for x in ["calefon", "luz_comedor", "rack_fans"] -%}
+        {% for x in ["calefon", "rack_fans"] -%}
          {% set s = states.switch[x] -%}
          {% if s -%}
           _{{s.name }}_: `{{ s.state }}`
@@ -36,5 +36,6 @@
           {{ x }} -> Unknown
          {%- endif %}
         {% endfor %}
+        *Luz Comedor* is `{{ states("light.luz_comedor") }}`
         *Luar* is `{{ states("device_tracker.9885e6493348395337") }}`
         *Tesa* is `{{ states("device_tracker.918db8b47d04") }}`

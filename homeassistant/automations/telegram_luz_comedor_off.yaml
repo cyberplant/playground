@@ -8,7 +8,7 @@
       command: /luz_comedor_off
   action:
   - service: homeassistant.turn_off
-    entity_id: switch.luz_comedor
+    entity_id: light.luz_comedor
   - service: notify.telegram
     data:
       message: Luz del comedor turned off.
