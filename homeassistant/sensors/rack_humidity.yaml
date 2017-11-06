@@ -1,5 +1,4 @@
 - platform: mqtt
-  state_topic: 'rack/sensor1'
+  state_topic: 'rack/humidity'
   name: 'Rack Humidity'
   unit_of_measurement: '%'
-  value_template: '{{ value_json.humidity }}'
