@@ -14,17 +14,18 @@
         {% for x in
            [
             "rack_temperature", "rack_humidity", "office_temperature",
-            "yr_temperature", "yr_humidity", "calefon", "ram_free",
+            "yr_temperature", "yr_humidity", "calefon", "ram_available",
             "ups_rack_load", "ups_rack_battery_charge",
             "ups_office_load", "ups_office_battery_charge",
             "speedtest_download", "speedtest_upload", "speedtest_ping",
+            "power_consumption"
            ]
         -%}
          {% set s = states.sensor[x] -%}
          {% if s -%}
-          _{{s.name }}_: `{{ s.state }} {{ s.attributes.unit_of_measurement }}`
+          _{{s.name }}_: ` {{ s.state }} {{ s.attributes.unit_of_measurement }} `
          {%- else -%}
-          {{ x }} -> Unknown
+          {{ x }}: Unknown
          {%- endif %}
         {% endfor %}
         *Switches:*
@@ -37,5 +38,5 @@
          {%- endif %}
         {% endfor %}
         *Luz Comedor* is `{{ states("light.luz_comedor") }}`
-        *Luar* is `{{ states("device_tracker.9885e6493348395337") }}`
-        *Tesa* is `{{ states("device_tracker.918db8b47d04") }}`
+        *Luar* is `{{ states("device_tracker.luar_sg7") }}`
+        *Tesa* is `{{ states("device_tracker.tesa_xiaomi") }}`

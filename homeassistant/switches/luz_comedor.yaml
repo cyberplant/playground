@@ -1,3 +1,0 @@
-- platform: tplink
-  name: "Enchufe TPLink"
-  host: !secret host_enchufe_tplink

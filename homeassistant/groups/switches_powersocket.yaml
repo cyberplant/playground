@@ -4,8 +4,8 @@ switches_powersocket:
   entities:
     - switch.z0_switch_ubiquiti
     - switch.z1_nvr
-    - switch.z2_warpzone_y_mikrotik
-    - switch.z3_empty
+    - switch.z2_warpzone
+    - switch.z3_mikrotik
     - switch.z4_esp8266
     - switch.z5_monitor
     - switch.z6_nas

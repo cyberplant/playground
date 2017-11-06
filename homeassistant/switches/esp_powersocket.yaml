@@ -11,13 +11,13 @@
   payload_on: "power_on:1"
   payload_off: "power_off:1"
 - platform: mqtt
-  name: "Z2 Warpzone y Mikrotik"
+  name: "Z2 Warpzone"
   state_topic: "switch/334a1200/pin_2"
   command_topic: "switch/334a1200/control"
   payload_on: "power_on:2"
   payload_off: "power_off:2"
 - platform: mqtt
-  name: "Z3 empty"
+  name: "Z3 Mikrotik"
   state_topic: "switch/334a1200/pin_3"
   command_topic: "switch/334a1200/control"
   payload_on: "power_on:3"

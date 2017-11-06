@@ -7,7 +7,7 @@ import sys
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.settimeout(5.0)
 
-server_address = ('192.168.17.145', 8266)
+server_address = ('192.168.17.86', 8266)
 
 try:
     # Send data

@@ -3,7 +3,8 @@
   trigger:
     platform: sun
     event: sunset
-    offset: +00:25:00
+    # offset: +00:25:00
+    offset: +00:02:00
   action:
     service: homeassistant.turn_on
     entity_id: light.luz_comedor
