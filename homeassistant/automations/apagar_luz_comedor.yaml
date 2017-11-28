@@ -3,8 +3,10 @@
   trigger:
     platform: sun
     event: sunrise
-    # offset: -00:35:00
-    offset: -02:35:00
+    offset: -02:00:00
   action:
-    service: homeassistant.turn_off
+  - service: homeassistant.turn_off
     entity_id: light.luz_comedor
+  - service: notify.telegram
+    data:
+      message: 'Apagando luz del comedor'
