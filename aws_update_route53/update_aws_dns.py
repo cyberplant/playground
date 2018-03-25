@@ -3,7 +3,8 @@
 
 import time
 import sys
-import urllib2
+from six.moves.urllib.request import urlopen
+
 from boto.route53.connection import Route53Connection
 from boto.route53.exception import DNSServerError
 from boto.route53.record import ResourceRecordSets
@@ -74,7 +75,7 @@ def resolve_name_ip(name, resource_type):
         """
         # return answer.response.answer[0].items[0].address
         return answer[0].address
-    except Exception, e:
+    except Exception as e:
         logger.error("Exception trying to solve %s (%s): %s", name,
                      resource_type, e)
 
@@ -110,7 +111,7 @@ def update_dns(args):
 
         try:
             zone = conn.get_hosted_zone(args.hosted_zone)
-        except DNSServerError, e:
+        except DNSServerError as e:
             logger.error(e)
             sys.exit(1)
 
@@ -171,7 +172,7 @@ def update_dns(args):
 
 
 def get_external_ipv4():
-    return urllib2.urlopen("http://whatismyip.akamai.com").read()
+    return urlopen("http://whatismyip.akamai.com").read().decode("utf-8")
 
 
 def get_external_ipv6():
