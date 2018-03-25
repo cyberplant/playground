@@ -33,26 +33,6 @@ def get_change_status(response):
     return response['ChangeInfo']['Status']
 
 
-def get_args():
-    import argparse
-
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument("hosted_zone", help="The AWS Hosted Zone")
-    parser.add_argument("domain_name", help="The domain to update")
-    parser.add_argument("ipv4", nargs="?",
-                        help="""IPv4 manually assigned
-                                ('disable' to disable IPv4 updating)""")
-    parser.add_argument("ipv6", nargs="?",
-                        help="""IPv6 manually assigned
-                                ('disable' to disable IPv6 updating)""")
-    args = parser.parse_args()
-
-    logger.debug(args)
-
-    return args
-
-
 def resolve_name_ip(name, resource_type):
     import dns.resolver
 
@@ -78,6 +58,17 @@ def resolve_name_ip(name, resource_type):
     except Exception as e:
         logger.error("Exception trying to solve %s (%s): %s", name,
                      resource_type, e)
+
+
+def get_route53_connection(args):
+    params = {}
+    if args.aws_access_key_id:
+        params["aws_access_key_id"] = args.aws_access_key_id
+
+    if args.aws_secret_access_key:
+        params["aws_secret_access_key"] = args.aws_secret_access_key
+
+    return Route53Connection(**params)
 
 
 def update_dns(args):
@@ -106,7 +97,7 @@ def update_dns(args):
             logger.debug("IP in DNS is different (%s), updating.", resolved_ip)
 
         if not conn:
-            conn = Route53Connection()
+            conn = get_route53_connection(args)
             changes = ResourceRecordSets(conn, args.hosted_zone, '')
 
         try:
@@ -195,6 +186,32 @@ def update_ips(args):
 
     if not args.ipv6:
         args.ipv6 = get_external_ipv6()
+
+
+def get_args():
+    import argparse
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("hosted_zone", help="The AWS Hosted Zone")
+    parser.add_argument("domain_name", help="The domain to update")
+    parser.add_argument("ipv4", nargs="?",
+                        help="""IPv4 manually assigned
+                                ('disable' to disable IPv4 updating)""")
+    parser.add_argument("ipv6", nargs="?",
+                        help="""IPv6 manually assigned
+                                ('disable' to disable IPv6 updating)""")
+
+    parser.add_argument("--aws-access-key-id", nargs="?",
+                        help="""AWS Access Key ID (if not in ~/.boto)""")
+    parser.add_argument("--aws-secret-access-key", nargs="?",
+                        help="""AWS Secret Access Key (if not in ~/.boto)""")
+
+    args = parser.parse_args()
+
+    logger.debug(args)
+
+    return args
 
 
 if __name__ == '__main__':
