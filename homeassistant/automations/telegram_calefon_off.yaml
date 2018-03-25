@@ -1,0 +1,11 @@
+- id: telegram_calefon_off
+  alias: 'Telegram command: apagar calefon'
+  hide_entity: true
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: /calefon_off
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.calefon

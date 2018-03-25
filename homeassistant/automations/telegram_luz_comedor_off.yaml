@@ -1,0 +1,15 @@
+- id: telegram_luz_comedor_off
+  alias: 'Telegram command: apagar luz del comedor'
+  hide_entity: true
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: /luz_comedor_off
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.luz_comedor
+  - service: notify.telegram
+    data:
+      message: Luz del comedor turned off.
+

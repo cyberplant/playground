@@ -1,0 +1,9 @@
+- id: telegram_homeassistant_updates
+  alias: Hay actualizaciones de HomeAssistant
+  trigger:
+  - platform: state
+    entity_id: updater.updater
+  action:
+    service: notify.telegram
+    data:
+      message: There is a new Home Assistant release available.

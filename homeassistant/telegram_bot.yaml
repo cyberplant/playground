@@ -1,4 +1,5 @@
-platform: webhooks
+#platform: webhooks
+platform: polling
 api_key: !secret telegram_api_key
 trusted_networks: !secret telegram_trusted_networks
 allowed_chat_ids: !secret telegram_allowed_chat_ids

@@ -1,0 +1,13 @@
+- action:
+  - alias: Office UPS on Battery notification.
+    data:
+      message: Office UPS is on Battery.
+    service: notify.telegram
+  alias: Notify when Office UPS is on battery
+  id: '1497919127278'
+  trigger:
+  - entity_id: sensor.office_ups_status
+    from: OL
+    platform: state
+    to: OB
+

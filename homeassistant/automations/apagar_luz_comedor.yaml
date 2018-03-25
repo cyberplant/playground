@@ -1,0 +1,12 @@
+- id: apagar_luz_comedor
+  alias: Apagar la luz del comedor
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: -02:00:00
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.luz_comedor
+  - service: notify.telegram
+    data:
+      message: 'Apagando luz del comedor'

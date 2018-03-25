@@ -1,9 +1,0 @@
-office_ups:
-  name: UPS Oficina
-  entities:
-    - sensor.nut_ups_battery_charge
-    - sensor.nut_ups_battery_voltage
-    - sensor.nut_ups_input_voltage
-    - sensor.nut_ups_load
-    - sensor.nut_ups_status_data
-    - sensor.nut_ups_ups_temperature

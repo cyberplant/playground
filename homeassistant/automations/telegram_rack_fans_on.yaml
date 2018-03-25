@@ -1,0 +1,14 @@
+- id: telegram_rack_fans_on
+  alias: 'Telegram command: start rack fans'
+  hide_entity: true
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: /rack_fans_on
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.rack_fans
+  - service: notify.telegram
+    data:
+      message: Rack fans turned on.

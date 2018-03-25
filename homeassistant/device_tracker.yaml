@@ -1,5 +1,18 @@
-- platform: mikrotik
-  host: !secret device_tracker_host
-  username: !secret device_tracker_username
-  password: !secret device_tracker_password
-  port: !secret device_tracker_port
+# - platform: mikrotik
+#   host: !secret device_tracker_host
+#   username: !secret device_tracker_username
+#   password: !secret device_tracker_password
+#   port: !secret device_tracker_port
+
+# - platform: owntracks
+# max_gps_accuracy: 200
+
+# - platform: gpslogger
+- platform: ping
+  interval_seconds: 10
+  consider_home: 1800
+  hosts:
+    luar_sg7: 192.168.17.4
+    luar_ipad4: 192.168.17.11
+    tesa_xiaomi: 192.168.17.54
+    rocios_iphone: 192.168.17.12

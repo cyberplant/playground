@@ -1,0 +1,11 @@
+- platform: nut
+  name: UPS Rack
+  host: !secret ip_ups_rack
+  username: monuser
+  password: secret
+  resources:
+    - battery.charge
+    - ups.load
+    - input.voltage
+    - ups.status
+    - battery.voltage

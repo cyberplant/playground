@@ -1,0 +1,12 @@
+- id: prender_luz_comedor
+  alias: Prender la luz del comedor
+  trigger:
+    platform: sun
+    event: sunset
+    offset: +00:02:00
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.luz_comedor
+  - service: notify.telegram
+    data:
+      message: 'Prendiendo luz del comedor'

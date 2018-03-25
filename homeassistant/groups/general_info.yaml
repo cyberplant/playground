@@ -7,3 +7,7 @@ general_info:
     - sensor.cpu_speed
     - sensor.cpu_temperature
     - sensor.systemmonitor
+    - sensor.calefon
+    - sensor.power_consumption
+    - device_tracker.luar_sg7
+    - device_tracker.tesa_xiaomi

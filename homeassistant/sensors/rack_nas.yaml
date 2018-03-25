@@ -1,0 +1,11 @@
+- platform: synologydsm
+  host: !secret rack_nas_ip
+  username: !secret rack_nas_username
+  password: !secret rack_nas_password
+  monitored_conditions:
+    - cpu_total_load
+    - memory_real_usage
+    #- network_up
+    #- disk_status
+    #- disk_temp
+    #- volume_percentage_used

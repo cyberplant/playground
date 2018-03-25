@@ -1,0 +1,7 @@
+switches_generic:
+  view: yes
+  name: Interruptores
+  entities:
+    - switch.calefon
+    - switch.rack_fans
+    - light.luz_comedor

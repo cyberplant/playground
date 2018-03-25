@@ -1,0 +1,5 @@
+- platform: command_line
+  command: python3 /config/scripts/get_power_consumption.py
+  name: Power Consumption
+  unit_of_measurement: "Watts"
+  value_template: '{{ value_json.result | multiply(0.1) | round(2) }}'

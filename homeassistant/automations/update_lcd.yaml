@@ -1,0 +1,39 @@
+- id: update_info_lcd
+  trigger:
+    - platform: time
+      seconds: /15
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "19021c00/lcd/line0"
+        payload_template: 'R|    MVD: {{ states.sensor.yr_temperature.state }}ßC'
+
+    - service: mqtt.publish
+      data:
+        topic: "19021c00/lcd/line0"
+        payload_template: 'L|{{ now().strftime("%H:%M") }} '
+
+    - service: mqtt.publish
+      data:
+        topic: "19021c00/lcd/line3"
+        payload_template: 'Calefon: {{ states.sensor.calefon.state }}'
+
+    - service: mqtt.publish
+      data:
+        topic: "19021c00/lcd/line1"
+        payload_template: 'L|Rack~'
+
+    - service: mqtt.publish
+      data:
+        topic: "19021c00/lcd/line1"
+        payload_template: 'R|   H:{{ states.sensor.rack_humidity.state }}%/T:{{ states.sensor.rack_temperature.state }}ßC'
+
+    - service: mqtt.publish
+      data:
+        topic: "19021c00/lcd/line2"
+        payload_template: 'L|Office~'
+
+    - service: mqtt.publish
+      data:
+        topic: "19021c00/lcd/line2"
+        payload_template: 'R|     T:{{ states.sensor.office_temperature.state | round(1) }}ßC'

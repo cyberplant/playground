@@ -1,0 +1,16 @@
+- id: calefon_standby
+  alias: Calefon en Standby
+  # initial_state: False
+  trigger:
+    platform: template
+    value_template: '{% if (states.switch.calefon.attributes.state_detail==''standby'')
+      %}true{% else %}false{% endif %}'
+  action:
+#   - service: mqtt.publish
+#     data:
+#       topic: "19021c00/lcd/line3"
+#       payload: 'Calefon StandBy'
+  - service: notify.telegram
+    data:
+      message: 'Calefon en standby{% if (states.switch.calefon.attributes.current_power_w) %}, consumo: {{ states.switch.calefon.attributes.current_power_w }} watts{% endif %}'
+

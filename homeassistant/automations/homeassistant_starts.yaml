@@ -1,0 +1,17 @@
+- id: homeassistant_starts
+  alias: Inicia HomeAssistant
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - service: notify.telegram
+    data:
+      message: Home Assistant is starting.
+  - service: mqtt.publish
+    data:
+      topic: "19021c00/lcd/line0"
+      payload_template: 'Hass Started:'
+  - service: mqtt.publish
+    data:
+      topic: "19021c00/lcd/line1"
+      payload_template: '{{ now().strftime("%Y/%m/%d %H:%M") }}'

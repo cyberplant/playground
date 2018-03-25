@@ -1,4 +1,6 @@
 media:
+  view: yes
   name: Media Devices
   entities:
     - media_player.directv_rid035645041860
+    - media_player.luars_chromecast

@@ -1,0 +1,10 @@
+- platform: template
+  sensors:
+    tarifa_ute:
+      friendly_name: 'Tarifa de UTE'
+      value_template: >-
+          {%- if time_between("17:00", "23:00") %} 
+              Horario CARO
+          {% else %}
+              Horario Barato
+          {%- endif %}
