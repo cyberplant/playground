@@ -107,24 +107,34 @@ def update_dns(args):
             sys.exit(1)
 
         logger.debug(zone)
+        logger.debug(resource_type)
 
         response = conn.get_all_rrsets(args.hosted_zone, resource_type,
-                                       args.domain_name, maxitems=1)[0]
+                                       args.domain_name, maxitems=20)
+
+        response_ttl = response[0].ttl
+
+        resource_records = [x.resource_records for x in response
+                            if x.type==resource_type and x.name==args.domain_name]
 
         logger.debug(response)
+        if not current_ip:
+            if resource_records:
+                change1 = changes.add_change("DELETE", args.domain_name,
+                                             resource_type)
+                for old_value in resource_records:
+                    change1.add_value(old_value)
+        else:
+            if resource_records and current_ip not in resource_records:
+                change1 = changes.add_change("DELETE", args.domain_name,
+                                             resource_type)
+                for old_value in resource_records:
+                    change1.add_value(old_value)
 
-        if current_ip not in response.resource_records:
             logger.info('Found new IP: %s' % current_ip)
 
-            # Delete the old record, and create a new one.
-            # This code is from route53.py script, the change record command
-            change1 = changes.add_change("DELETE", args.domain_name,
-                                         resource_type, response.ttl)
-            for old_value in response.resource_records:
-                change1.add_value(old_value)
-
             change2 = changes.add_change("CREATE", args.domain_name,
-                                         resource_type, response.ttl)
+                                         resource_type, response_ttl)
             change2.add_value(current_ip)
 
     if conn:
@@ -153,7 +163,7 @@ def update_dns(args):
             if get_change_status(change['GetChangeResponse']) == 'INSYNC':
                 logger.info('Change %s %s from %s -> %s',
                             args.domain_name, resource_type,
-                            response.resource_records[0], current_ip)
+                            resource_records, current_ip)
                 logger.warn("IP%s updated: %s" % (family, current_ip))
             else:
                 logger.warning('Unknown status for the change: %s' % change)
