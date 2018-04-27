@@ -92,7 +92,7 @@ def update_dns(args):
         resolved_ip = resolve_name_ip(args.domain_name, resource_type)
         if resolved_ip == current_ip:
             logger.debug('My IP = IP in DNS, nothing to do.')
-            # continue
+            continue
         else:
             logger.debug("IP in DNS is different (%s), updating.", resolved_ip)
 
