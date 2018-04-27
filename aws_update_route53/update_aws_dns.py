@@ -92,7 +92,7 @@ def update_dns(args):
         resolved_ip = resolve_name_ip(args.domain_name, resource_type)
         if resolved_ip == current_ip:
             logger.debug('My IP = IP in DNS, nothing to do.')
-            continue
+            # continue
         else:
             logger.debug("IP in DNS is different (%s), updating.", resolved_ip)
 
@@ -115,21 +115,24 @@ def update_dns(args):
         response_ttl = response[0].ttl
 
         resource_records = [x.resource_records for x in response
-                            if x.type==resource_type and x.name==args.domain_name]
+                            if x.type==resource_type and x.name.startswith(args.domain_name)]
 
         logger.debug(response)
+        logger.debug(resource_records)
         if not current_ip:
             if resource_records:
                 change1 = changes.add_change("DELETE", args.domain_name,
-                                             resource_type)
-                for old_value in resource_records:
-                    change1.add_value(old_value)
+                                             resource_type, response_ttl)
+                for old_values in resource_records:
+                    for v in old_values:
+                        change1.add_value(v)
         else:
             if resource_records and current_ip not in resource_records:
                 change1 = changes.add_change("DELETE", args.domain_name,
-                                             resource_type)
-                for old_value in resource_records:
-                    change1.add_value(old_value)
+                                             resource_type, response_ttl)
+                for old_values in resource_records:
+                    for v in old_values:
+                        change1.add_value(v)
 
             logger.info('Found new IP: %s' % current_ip)
 
@@ -139,6 +142,7 @@ def update_dns(args):
 
     if conn:
         logger.warn("Changed detected, contacting AWS Route53 API")
+        logger.debug(changes)
         try:
             commit = changes.commit()
             logger.debug('%s' % commit)
